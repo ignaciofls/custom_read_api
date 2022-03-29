@@ -94,8 +94,8 @@ Here's a sample skill definition for this example (inputs and outputs should be 
       "context": "/document",
       "uri": "https://yourappfuncname.azurewebsites.net/api/function_name?code=unique_code_for_auth_here",
       "httpMethod": "POST",
-      "timeout": "PT30S",
-      "batchSize": 1000,
+      "timeout": "PT60S",
+      "batchSize": 1,
       "degreeOfParallelism": null,
       "inputs": [
         {
