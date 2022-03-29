@@ -46,8 +46,7 @@ def compose_response(json_data):
                 if 'lines' in i:
                     for l in i['lines']:
                         if 'text' in l:
-                            merged_content=merged_content+l['text']
-                            merged_content=merged_content+' '
+                            merged_content=merged_content+l['text']+' '
     output = {"values": [{"recordId": "0","data": {"text": merged_content}}]}
     return json.dumps(output, ensure_ascii=False)
 
