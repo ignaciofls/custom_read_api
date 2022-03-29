@@ -26,7 +26,7 @@ Products:
 
 ## Sample Input:
 
-You can find a sample input for the skill [here](../main/custom_ner/sample.dat)
+You can find a sample input for the skill [here](../main/latestocr/sample.dat)
 
 ```json
 {
@@ -119,7 +119,7 @@ Here's a sample skill definition for this example (inputs and outputs should be 
 
 ## Sample Index Field Definition
 
-The skill will output the entities that have been extracted for the corpus. In this example, I am just expecting one entity but typically there will more than one, so we need a field of Collection.ComplexType that will contain subfields for Category, Confidence, Offset and Length.
+This skill internally calls a given endpoint for OCR, navigates the output, trims the response to only fetch the text (leaving aside layout and confidence levels) and concats the text into one single string.
 
 ```json
 {
