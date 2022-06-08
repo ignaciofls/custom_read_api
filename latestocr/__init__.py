@@ -41,7 +41,7 @@ def compose_response(json_data):
 
 def read(endpoint, key, recordId, data):
     try:
-        docUrl = base64.b64decode(data["Url"]).decode('utf-8')[:-1] + data["SasToken"]
+        docUrl = base64.b64decode(data["Url"]+"=").decode('utf-8')[:-1] + data["SasToken"]
         #logging.info("docurl is: " + docUrl)
         body = {"urlSource": docUrl}
         header = {'Ocp-Apim-Subscription-Key': key,
@@ -68,7 +68,7 @@ def read(endpoint, key, recordId, data):
         read_result=dict['analyzeResult']['content']
         output_record = {
             "recordId": recordId,
-            "data": read_result
+            "data": {"text": read_result}
         }
 
     except Exception as error:
