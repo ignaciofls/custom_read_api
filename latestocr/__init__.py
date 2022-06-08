@@ -41,8 +41,11 @@ def compose_response(json_data):
 
 def read(endpoint, key, recordId, data):
     try:
-        docUrl = base64.b64decode(data["Url"]+"=").decode('utf-8')[:-1] + data["SasToken"]
-        #logging.info("docurl is: " + docUrl)
+        #check if length is divisible by 4
+        if len(data["Url"]) % 4 == 0:
+            docUrl = base64.b64decode(data["Url"]).decode('utf-8')[:-1] + data["SasToken"]
+        else:
+            docUrl = base64.b64decode(data["Url"][:-1]).decode('utf-8') + data["SasToken"]
         body = {"urlSource": docUrl}
         header = {'Ocp-Apim-Subscription-Key': key,
         'Content-Type': 'application/json'
